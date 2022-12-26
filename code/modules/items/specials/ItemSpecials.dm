@@ -14,7 +14,7 @@
 
 /proc/get_dir_alt(var/atom/source, var/atom/target) //Opposite of default get dir, only returns diagonal if target perfectly diagonal
 	if(!source || !target)
-		CRASH("Invalid Params:: Source:[source] Target:[target]")
+		CRASH("Invalid Params for get_dir_alt: Source:[identify_object(source)] Target:[identify_object(target)]")
 	if(abs(source.x-target.x) > abs(source.y-target.y)) //Mostly left/right with a little up or down
 		if(source.x > target.x) //Target left
 			return WEST
@@ -718,7 +718,8 @@
 			. = ..()
 			var/datum/projectile/special/spawner/P = projectile
 			P.damage_type = D_KINETIC
-			P.power = 5
+			P.damage = 5
+			P.generate_stats()
 			P.typetospawn = /obj/random_item_spawner/organs/bloody/one_to_three
 			P.icon = 'icons/mob/monkey.dmi'
 			P.icon_state = "monkey"
@@ -1813,6 +1814,7 @@ ABSTRACT_TYPE(/datum/item_special/spark)
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = ""
 	anchored = 1
+	pass_unstable = FALSE
 	layer = EFFECTS_LAYER_1
 	pixel_x = -64
 	pixel_y = -64
@@ -1985,7 +1987,7 @@ ABSTRACT_TYPE(/datum/item_special/spark)
 
 		bullet_act(var/obj/projectile/P)
 			if (!P.goes_through_mobs)
-				var/obj/projectile/Q = shoot_reflected_to_sender(P, src)
+				var/obj/projectile/Q = shoot_reflected_bounce(P, src)
 				P.die()
 
 				src.visible_message("<span class='alert'>[src] reflected [Q.name]!</span>")

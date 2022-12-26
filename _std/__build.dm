@@ -46,6 +46,8 @@ o+`        `-` ``..-:yooos-..----------..`
 //#define LOW_SECURITY // Deletes turrets
 //#define NO_CRITTERS // Deletes mob critters
 //#define NO_RANDOM_ROOMS // Don't generate random rooms. Random room areas will be left blank and the landmark will be visible
+//#define I_AM_HACKERMAN // Lets you varedit things you normally couldn't (admin holders, server config)
+//#define CHECK_MORE_RUNTIMES // Enables checking for some additional errors which might be too costly on live server
 
 //#define Z_LOG_ENABLE 1  // Enable additional world.log logging
 
@@ -117,6 +119,7 @@ o+`        `-` ``..-:yooos-..----------..`
 //#define MAP_OVERRIDE_DENSITY
 //#define MAP_OVERRIDE_KONDARU
 //#define MAP_OVERRIDE_OZYMANDIAS
+//#define MAP_OVERRIDE_NADIR
 //#define MAP_OVERRIDE_FLEET
 //#define MAP_OVERRIDE_ICARUS
 //#define MAP_OVERRIDE_GEHENNA			// Warcrimes WIP do not use
@@ -134,6 +137,7 @@ o+`        `-` ``..-:yooos-..----------..`
 
 //#define RP_MODE 1
 //#define HALLOWEEN 1
+//#define AUTUMN 1
 //#define XMAS 1
 //#define CANADADAY 1
 //#define FOOTBALL_MODE 1
@@ -149,6 +153,8 @@ o+`        `-` ``..-:yooos-..----------..`
 #define LOW_SECURITY
 #define NO_CRITTERS
 #define NO_RANDOM_ROOMS
+#define I_AM_HACKERMAN
+#define CHECK_MORE_RUNTIMES
 #endif
 
 var/global/vcs_revision = "1"

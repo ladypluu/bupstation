@@ -1,3 +1,6 @@
+TYPEINFO(/obj/machinery/power/furnace)
+	mats = 20
+
 /obj/machinery/power/furnace
 	name = "Zaojun-2 5kW Furnace"
 	desc = "The venerable XIANG|GIESEL model '灶君' combustion furnace with integrated 5 kilowatt thermocouple. A simple power solution for low-demand facilities and outposts."
@@ -12,9 +15,16 @@
 	var/genrate = 5000
 	var/stoked = 0 // engine ungrump
 	custom_suicide = 1
-	mats = 20
 	event_handler_flags = NO_MOUSEDROP_QOL | USE_FLUID_ENTER
 	deconstruct_flags = DECON_WRENCH | DECON_CROWBAR | DECON_WELDER
+
+	New(new_loc)
+		..()
+		START_TRACKING
+
+	disposing()
+		STOP_TRACKING
+		..()
 
 	process()
 		if(status & BROKEN) return
@@ -52,7 +62,7 @@
 		//At max fuel, the state will be 4, aka all bars, then it will lower / increase as fuel is added
 		if(fuel_state != last_fuel_state) //The fuel state has changed and we need to do an update
 			last_fuel_state = fuel_state
-			for(var/i = 1; i <= 4; i++)
+			for(var/i in 1 to 4)
 				var/okey = "fuel[i]"
 				if(fuel_state >= i) //Add the overlay
 					var/image/I = GetOverlayImage(okey)
@@ -112,7 +122,7 @@
 			return
 
 	MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
-		if (!in_interact_range(src, user)  || BOUNDS_DIST(O, user) > 0)
+		if (!in_interact_range(src, user)  || BOUNDS_DIST(O, user) > 0 || !can_act(user))
 			return
 		else
 			if (src.fuel >= src.maxfuel)
@@ -207,11 +217,11 @@
 		else if (istype(W, /obj/item/spacecash/))
 			if (W.amount == 1)
 				fuel_name = "a credit"
-				fuel += 1
+				fuel += 0.1
 			else
 				fuel_name = "credits"
 				stacked = TRUE
-				handle_stacks(W, 2)
+				handle_stacks(W, 0.1)
 		else if (istype(W, /obj/item/paper/)) fuel += 6
 		else if (istype(W, /obj/item/clothing/gloves/)) fuel += 10
 		else if (istype(W, /obj/item/clothing/head/)) fuel += 20

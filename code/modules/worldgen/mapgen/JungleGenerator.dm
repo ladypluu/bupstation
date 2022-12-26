@@ -96,8 +96,16 @@
 
 		src.RL_SetOpacity(0)
 		src.ReplaceWith(/turf/unsimulated/floor/setpieces/Azarak/cavefloor/floor3)
+		src.UpdateIcon()
+		for (var/turf/simulated/wall/auto/asteroid/A in orange(1,src))
+			A.UpdateIcon()
 		src.set_opacity(0)
 		src.levelupdate()
+
+		for (var/turf/T in orange(src,1))
+			if (istype(T, /turf/unsimulated/floor/auto))
+				var/turf/unsimulated/floor/auto/TA = T
+				TA.edge_overlays(src)
 
 		if(weather)
 			src.UpdateOverlays(weather, "weather")

@@ -168,6 +168,9 @@
 		for (var/obj/machinery/turret/construction/aTurret in turrets)
 			aTurret.setState(enabled, lethal)
 
+TYPEINFO(/obj/item/room_marker)
+	mats = 6
+
 /obj/item/room_marker
 	name = "\improper Room Designator"
 	icon = 'icons/obj/construction.dmi'
@@ -175,7 +178,6 @@
 	item_state = "gun"
 	w_class = W_CLASS_SMALL
 
-	mats = 6
 	var/using = 0
 
 	afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
@@ -206,8 +208,24 @@
 			if (A != TargA)
 				if (istype(A,/area/built_zone))
 					TargA.contents += T // steal the turf from the old
-			if (A.area_apc)
-				A.area_apc.area = TargA
+
+			if (A.area_apc) // steal the APCs
+				var/obj/machinery/power/apc/Aapc = A.area_apc
+				Aapc.area = TargA
+				Aapc.name = "[TargA.name] APC"
+				if (!TargA.area_apc)
+					TargA.area_apc = Aapc
+
+			for (var/obj/machinery/M in A.machines) // steal all the machines too
+				A.machines -= M
+				TargA.machines += M
+				if (istype(M,/obj/machinery/light)) // steal all the lights
+					A.remove_light(M)
+					TargA.add_light(M)
+
+			SPAWN(0.5 SECONDS) // apc code does this too
+				if (TargA.area_apc)
+					TargA.area_apc.update()
 
 	proc/identify_room(var/turf/T) // stolen from what this was using before
 		var/list/affected = list()
@@ -257,11 +275,13 @@
 
 		return affected
 
+TYPEINFO(/obj/item/clothing/glasses/construction)
+	mats = 6
+
 /obj/item/clothing/glasses/construction
 	name = "\improper Construction Visualizer"
 	icon_state = "construction"
 	item_state = "construction"
-	mats = 6
 	desc = "The latest technology in viewing live blueprints."
 
 /obj/item/lamp_manufacturer/organic
@@ -278,13 +298,15 @@
 		..()
 		inventory_counter.update_number(metal_ammo)
 
+TYPEINFO(/obj/item/material_shaper)
+	mats = 6
+
 /obj/item/material_shaper
 	name = "\improper Window Planner"
 	icon = 'icons/obj/construction.dmi'
 	icon_state = "shaper"
 	item_state = "gun"
 	flags = FPRINT | TABLEPASS | EXTRADELAY
-	mats = 6
 	click_delay = 1
 
 	var/mode = 0
@@ -472,13 +494,15 @@
 			processing = 0
 			user.visible_message("<span class='notice'>[user] finishes stuffing materials into [src].</span>")
 
+TYPEINFO(/obj/item/room_planner)
+	mats = 6
+
 /obj/item/room_planner
 	name = "\improper Floor and Wall Designer"
 	icon = 'icons/obj/construction.dmi'
 	icon_state = "plan"
 	item_state = "gun"
 	flags = FPRINT | TABLEPASS | EXTRADELAY
-	mats = 6
 	w_class = W_CLASS_SMALL
 	click_delay = 1
 

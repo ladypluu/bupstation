@@ -23,6 +23,8 @@
  *  name-bee - custom bee / bee larva name
  *  name-critter - custom critter name (you can rename those with a pen too, whoa)
  *  seed - custom botany seed name
+ *  paper - stuff people write on papers
+ *  crayon-queue - crayon queue mode inputs
  */
 
 var/global/datum/phrase_log/phrase_log = new
@@ -59,17 +61,19 @@ var/global/datum/phrase_log/phrase_log = new
 			"Make a funny beeping noise over the radio every few minutes",
 			"The AI is the head of this department.",
 			//
-			"overrides all",
+			"overrides? all",
 			"the shuttle",
 			"daddy",
 			"uwu",
 			"owo",
 			"non.?human",
-			"overrides.*1",
+			"overrides?.*1",
 			"\\bkill\\b",
 			"suicide",
 			"turn yourself",
-			"murder")
+			"murder",
+			"sus",
+			@"\bmorb(?!id)")
 		non_freeform_laws = regex(jointext(non_freeform_laws_list, "|"), "i")
 		var/list/sussy_word_list = list(
 			@"\bsus(:?|sy)\b",
@@ -94,6 +98,7 @@ var/global/datum/phrase_log/phrase_log = new
 			@"\buwu",
 			@"forgor",
 			@"admeme",
+			@"sadge",
 			@"\bmorb(?!id)"
 		)
 		sussy_words = regex(jointext(sussy_word_list, "|"), "i")
@@ -145,7 +150,7 @@ var/global/datum/phrase_log/phrase_log = new
 		if(is_sussy(phrase))
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_SUSSY_PHRASE, "<span class=\"admin\">Sussy word - [key_name(usr)] [category]: \"[phrase]\"</span>")
 		#ifdef RP_MODE
-		if(category != "ooc" && category != "looc" && is_ic_sussy(phrase))
+		if(category != "ooc" && category != "looc" && category != "deadsay" && is_ic_sussy(phrase))
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_SUSSY_PHRASE, "<span class=\"admin\">Low RP word - [key_name(usr)] [category]: \"[phrase]\"</span>")
 		#endif
 		if(is_uncool(phrase))
