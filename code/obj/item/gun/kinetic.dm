@@ -1142,8 +1142,7 @@ ABSTRACT_TYPE(/obj/item/gun/kinetic/single_action)
 
 	shoot(var/atom/target, var/atom/start, var/mob/user, var/POX, var/POY, var/is_dual_wield)
 		sleep(0.3)
-		. = ..()
-		if (.)
+		if (src.canshoot(user) && !isghostdrone(user))
 			var/obj/effects/flintlock_smoke/E = new /obj/effects/flintlock_smoke(get_turf(src))
 			var/dir_x = target.x + POX/32 - start.x - POY/32
 			var/dir_y = target.y - start.y
@@ -1151,6 +1150,7 @@ ABSTRACT_TYPE(/obj/item/gun/kinetic/single_action)
 			dir_x /= len
 			dir_y /= len
 			E.setdir(dir_x, dir_y)
+		. = ..()
 
 /obj/item/gun/kinetic/single_action/flintlock/rifle
 	name = "flintlock rifle"

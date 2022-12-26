@@ -937,6 +937,7 @@
 				if (ROLE_PIRATE_CAPTAIN)
 					if (see_everything || see_pirates)
 						var/I = image(antag_pirate_captain, loc = M.current)
+						can_see.Add(I)
 				if (ROLE_SALVAGER)
 					if (see_everything || see_salvager)
 						var/I = image(antag_salvager, loc = M.current)
