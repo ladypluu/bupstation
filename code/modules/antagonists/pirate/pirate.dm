@@ -2,9 +2,6 @@
 	id = ROLE_PIRATE
 	display_name = "Pirate"
 
-	var/pirate_captain = FALSE
-	var/pirate_first_mate = FALSE
-
 	give_equipment()
 		if (!ishuman(src.owner.current))
 			boutput(src.owner.current, "<span class='alert'>Due to your lack of opposable thumbs, the pirates were unable to provide you with your equipment. That's biology for you.</span>")
@@ -67,9 +64,7 @@
 	first_mate
 		id = ROLE_PIRATE_FIRST_MATE
 		display_name = "Pirate First Mate"
-		pirate_first_mate = TRUE
 
 	captain
 		id = ROLE_PIRATE_CAPTAIN
 		display_name = "Pirate Captain"
-		pirate_captain = TRUE
