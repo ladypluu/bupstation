@@ -6660,7 +6660,7 @@
 /area/station/maintenance/inner/nw)
 "bJK" = (
 /obj/table/wood/auto,
-/obj/item/game_kit,
+/obj/item/boardgame/chess,
 /obj/machinery/light/incandescent/netural,
 /turf/simulated/floor/carpet/arcade/half,
 /area/station/crew_quarters/arcade/dungeon)
@@ -9295,6 +9295,9 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/computer/chem_requester/science{
+	area_name = "Quartermaster's office"
 	},
 /turf/simulated/floor,
 /area/station/quartermaster/office)
@@ -24621,7 +24624,7 @@
 /area/station/medical/medbay)
 "gYb" = (
 /obj/table/auto,
-/obj/item/game_kit,
+/obj/item/boardgame/chess,
 /obj/cable{
 	d1 = 1;
 	d2 = 2;
@@ -28440,7 +28443,7 @@
 /obj/table/wood/auto{
 	icon_state = "1"
 	},
-/obj/deskclutter{
+/obj/decal/cleanable/desk_clutter{
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -30971,7 +30974,7 @@
 	dir = 1
 	},
 /obj/table/auto,
-/obj/deskclutter,
+/obj/decal/cleanable/desk_clutter,
 /obj/decal/cleanable/dirt/jen,
 /obj/machinery/light/lamp/black/bright{
 	pixel_x = -3;
@@ -42734,7 +42737,7 @@
 /area/station/turret_protected/AIsat)
 "mnJ" = (
 /obj/table/wood/auto,
-/obj/deskclutter,
+/obj/decal/cleanable/desk_clutter,
 /turf/simulated/floor/circuit/purple,
 /area/station/crew_quarters/hor)
 "mnL" = (
@@ -47068,7 +47071,7 @@
 /area/station/hallway/primary/west)
 "nBY" = (
 /obj/table/auto,
-/obj/item/game_kit,
+/obj/item/boardgame/chess,
 /turf/simulated/floor/escape{
 	dir = 4
 	},
@@ -49852,7 +49855,7 @@
 	icon_state = "1-2"
 	},
 /obj/table/reinforced/auto,
-/obj/item/game_kit,
+/obj/item/boardgame/chess,
 /turf/simulated/floor/wood/five,
 /area/station/medical/asylum/main)
 "opG" = (
@@ -52590,7 +52593,7 @@
 	dir = 1
 	},
 /obj/table/auto,
-/obj/deskclutter,
+/obj/decal/cleanable/desk_clutter,
 /turf/simulated/floor/redblack{
 	dir = 1
 	},
@@ -76861,7 +76864,7 @@
 /obj/table/reinforced/bar/auto{
 	name = "table"
 	},
-/obj/deskclutter{
+/obj/decal/cleanable/desk_clutter{
 	pixel_x = -3;
 	pixel_y = 3
 	},
