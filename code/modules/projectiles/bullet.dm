@@ -530,13 +530,14 @@ toxic - poisons
 /datum/projectile/bullet/flintlock
 	name = "lead ball"
 	icon_state = "bullet"
-	power = 40
+	damage = 40
 	damage_type = D_PIERCING
 	armor_ignored = 0.66
 	hit_type = DAMAGE_STAB
 	implanted = /obj/item/implant/projectile/flintlock
 	shot_sound = 'sound/weapons/flintlock.ogg'
 	dissipation_delay = 10
+	hit_ground_chance = 100
 	casing = null
 	impact_image_state = "bhole-small"
 
@@ -545,6 +546,7 @@ toxic - poisons
 			var/mob/living/carbon/human/M = hit
 			if(proj.power > 30)
 				M.changeStatus("slowed", 3 SECONDS)
+				M.changeStatus("weakened", 2 SECONDS)
 			if(proj.power > 60)
 				var/turf/target = get_edge_target_turf(M, dirflag)
 				M.throw_at(target, 3, 2, throw_type = THROW_GUNIMPACT)
@@ -552,13 +554,13 @@ toxic - poisons
 		..()
 
 	rifle
-		power = 70
+		damage = 70
 		impact_image_state = "bhole-large"
 
 	mortar
 		name = "mortar grenade"
 		icon_state = "mortar"
-		power = 10 // The explosion should deal most of the damage.
+		damage = 10 // The explosion should deal most of the damage.
 		impact_image_state = "bhole-large"
 		damage_type = D_KINETIC
 		hit_type = DAMAGE_BLUNT

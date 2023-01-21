@@ -1,6 +1,6 @@
 /datum/antagonist/pirate
 	id = ROLE_PIRATE
-	display_name = "Pirate"
+	display_name = "\improper Pirate"
 
 	give_equipment()
 		if (!ishuman(src.owner.current))
@@ -63,8 +63,8 @@
 
 	first_mate
 		id = ROLE_PIRATE_FIRST_MATE
-		display_name = "Pirate First Mate"
+		display_name = "\improper Pirate First Mate"
 
 	captain
 		id = ROLE_PIRATE_CAPTAIN
-		display_name = "Pirate Captain"
+		display_name = "\improper Pirate Captain"
