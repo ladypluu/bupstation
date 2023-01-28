@@ -214,7 +214,7 @@
 /obj/submachine/weapon_vendor/pirate
 	name = "Pirate Weapons Vendor"
 	icon = 'icons/obj/vending.dmi'
-	icon_state = "weapon"
+	icon_state = "weapon-pirates"
 	desc = "An automated quartermaster service for supplying your pirate crew with weapons and gear."
 	token_accepted = /obj/item/requisition_token/pirate
 	log_purchase = TRUE
@@ -514,12 +514,12 @@
 
 /datum/materiel/loadout/musketeer
 	name = "Musketeer"
-	path = /obj/storage/crate/classcrate/pirate/musketeer
+	path = /obj/item/storage/backpack/satchel/flintlock_rifle_satchel
 	description = "Flintlock rifle and 15 rounds of ammunition provided in a specialised satchel."
 
 /datum/materiel/loadout/buccaneer
 	name = "Buccaneer"
-	path = /obj/storage/crate/classcrate/pirate/buccaneer
+	path = /obj/item/storage/backpack/satchel/flintlock_pistol_satchel
 	description = "A set of two flintlock pistols and 15 rounds of ammunition."
 
 // Requisition tokens
@@ -555,7 +555,7 @@
 	pirate
 		name = "doubloon"
 		desc = "A finely stamped gold coin compatible with the Pirate Weapons Vendor."
-		icon_state = "req-token"
+		icon_state = "doubloon"
 
 #undef WEAPON_VENDOR_CATEGORY_SIDEARM
 #undef WEAPON_VENDOR_CATEGORY_LOADOUT

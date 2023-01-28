@@ -9,13 +9,15 @@
 		var/mob/living/carbon/human/H = src.owner.current
 		H.unequip_all(TRUE)
 
+		H.equip_if_possible(new /obj/item/storage/backpack(H), H.slot_back)
+
 		if (id == ROLE_PIRATE_CAPTAIN)
 			H.equip_if_possible(new /obj/item/clothing/under/shirt_pants_b(H), H.slot_w_uniform)
 			H.equip_if_possible(new /obj/item/clothing/suit/armor/pirate_captain_coat(H), H.slot_wear_suit)
 			H.equip_if_possible(new /obj/item/clothing/head/pirate_captain(H), H.slot_head)
 			H.equip_if_possible(new /obj/item/clothing/shoes/swat/heavy(H), H.slot_shoes)
 			H.equip_if_possible(new /obj/item/device/radio/headset/pirate/captain(H), H.slot_ears)
-			H.equip_if_possible(new /obj/item/pinpointer/gold_bee(H), H.slot_l_store)
+			H.equip_if_possible(new /obj/item/pinpointer/gold_bee(H), H.slot_in_backpack)
 
 		else if (id == ROLE_PIRATE_FIRST_MATE)
 			H.equip_if_possible(new /obj/item/clothing/under/gimmick/guybrush(H), H.slot_w_uniform)
@@ -39,7 +41,6 @@
 			H.equip_if_possible(new /obj/item/device/radio/headset/pirate(H), H.slot_ears)
 
 		H.equip_if_possible(new /obj/item/clothing/shoes/swat(H), H.slot_shoes)
-		H.equip_if_possible(new /obj/item/storage/backpack(H), H.slot_back)
 		H.equip_if_possible(new /obj/item/reagent_containers/food/drinks/flask/pirate(H), H.slot_in_backpack)
 		H.equip_if_possible(new /obj/item/clothing/glasses/eyepatch/pirate(H), H.slot_glasses)
 		H.equip_if_possible(new /obj/item/requisition_token/pirate(H), H.slot_r_store)
