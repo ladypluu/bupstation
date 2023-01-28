@@ -10,7 +10,7 @@
 		var/obj/trinket
 		if (H.trinket)
 			trinket = H.trinket.deref()
-			trinket.set_loc(get_turf(H))
+			trinket.set_loc(null)
 		H.unequip_all(TRUE)
 
 		H.equip_if_possible(new /obj/item/storage/backpack(H), H.slot_back)
@@ -52,9 +52,6 @@
 		H.equip_if_possible(new /obj/item/swords_sheaths/pirate(H), H.slot_belt)
 
 		H.equip_sensory_items()
-
-		if (trinket)
-			H.equip_if_possible(trinket, H.slot_in_backpack)
 
 		H.traitHolder.addTrait("training_drinker")
 
