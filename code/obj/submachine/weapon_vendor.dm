@@ -218,6 +218,7 @@
 	desc = "An automated quartermaster service for supplying your pirate crew with weapons and gear."
 	token_accepted = /obj/item/requisition_token/pirate
 	log_purchase = TRUE
+	layer = 4
 
 	ex_act()
 		return
