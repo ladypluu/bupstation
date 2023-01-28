@@ -1937,6 +1937,11 @@ ABSTRACT_TYPE(/obj/item/reagent_containers/food/snacks)
 	item_state = "detflask"
 	initial_reagents = list("bojack"=40)
 
+/obj/item/reagent_containers/food/drinks/flask/pirate
+	initial_volume = 20
+	initial_reagents = list("moonshine"=20)
+
+
 /obj/item/reagent_containers/food/drinks/cocktailshaker
 	name = "cocktail shaker"
 	desc = "A stainless steel tumbler with a top, used to mix cocktails. Can hold up to 120 units."

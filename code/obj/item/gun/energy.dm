@@ -1663,6 +1663,15 @@ TYPEINFO(/obj/item/gun/energy/lawbringer)
 			src.icon_state = "pulse_rifle[ratio]"
 			return
 
+	modified
+		name = "modified pulse rifle"
+		desc = "A heavily modified pulse rifle; it looks as if the gun has been affixed to the EMP setting, and the power setting tuned down. Ideal for depowering doors quickly."
+
+		New()
+			..()
+			set_current_projectile(new/datum/projectile/energy_bolt/electromagnetic_pulse/weak)
+			projectiles = list(new/datum/projectile/energy_bolt/electromagnetic_pulse/weak)
+
 
 ///////////////////////////////////////Wasp Gun
 TYPEINFO(/obj/item/gun/energy/wasp)
