@@ -1994,7 +1994,7 @@ var/list/fun_images = list()
 	if(alert("Do you want to upload an HTML file, or type it in?", "HTML Source", "Here", "Upload") == "Here")
 		newHTML = input("Gib HTML, then.", "FEED ME HTML", pregameHTML) as message
 	else
-		newHTML = input("Upload that file!", "Upload that file!") as file
+		newHTML = input("Upload that file!", "Upload that file!") as file|null
 		if(newHTML)
 			newHTML = file2text(newHTML)
 	if(newHTML)
@@ -2033,9 +2033,6 @@ var/list/fun_images = list()
 		for (var/mob/living/carbon/human/H in mobs)
 			var/obj/item/implant/revenge/microbomb/MB = new (H)
 			MB.power = microbombs_4_everyone
-			MB.implanted = 1
-			H.implant.Add(MB)
-			MB.implanted(H, 0)
 			implanted ++
 		SPAWN(3 SECONDS)
 			boutput(usr, "<span class='alert'>Implanted [implanted] people with microbombs. Any further humans that spawn will also have bombs.</span>")
