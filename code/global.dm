@@ -255,6 +255,7 @@ var/global
 	game_version = "Goonstation 13 (r" + VCS_REVISION + ")"
 
 	master_mode = "traitor"
+	next_round_mode = "traitor"
 
 	host = null
 	game_start_delayed = 0
