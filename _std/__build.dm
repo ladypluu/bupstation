@@ -117,7 +117,7 @@ o+`        `-` ``..-:yooos-..----------..`
 //#define MAP_OVERRIDE_ATLAS			// gannetmap OR IS IT KUBIUSGANNETMAP??
 //#define MAP_OVERRIDE_MANTA			// manta map
 //#define MAP_OVERRIDE_DENSITY
-//#define MAP_OVERRIDE_KONDARU
+#define MAP_OVERRIDE_KONDARU
 //#define MAP_OVERRIDE_OZYMANDIAS
 //#define MAP_OVERRIDE_NADIR
 //#define MAP_OVERRIDE_FLEET
